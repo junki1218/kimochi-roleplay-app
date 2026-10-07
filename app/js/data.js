@@ -40,6 +40,7 @@ export const DEFAULT_SCENES = [
   { id: 'ba_14', title: 'けしゴム', situation: 'けしゴムを かってに つかわれて', line: 'いいよ', img: null, emoji: '✏️' },
   { id: 'ba_15', title: 'つみき', situation: 'ともだちの つみきを たおして', line: 'ごめんなさい', img: null, emoji: '🧱' },
   { id: 'ba_16', title: 'せんせいと', situation: 'せんせいに いわれて', line: 'ごめんなさい', img: null, emoji: '🏫' },
+  // ba_12・ba_17 は いかのおすし素材の線画を仮置き。クレイ版（IMAGE_SPEC 4.3）が届いたら差し替える
   { id: 'ba_12', title: 'しらない ひと', situation: 'しらない ひとに こえを かけられて', line: 'いやです', img: 'images/ba/ba_12_kotowaru.webp' },
   { id: 'ba_18', title: 'ボール', situation: 'ボールを とられそうに なって', line: 'いやです', img: null, emoji: '🏀' },
   { id: 'ba_03', title: 'できた', situation: 'もんだいが とけて', line: 'わかった！', img: 'images/ba/ba_03_hirameki.webp' },
