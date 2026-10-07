@@ -30,11 +30,10 @@ app/
 
 `js/data.js` で `img: null` になっている所が絵文字の仮置き。
 画像を `images/kao/` か `images/ba/` に WebP で置き、`img` にパスを入れる。
-あわせて `sw.js` の `SHELL` に足し、`CACHE` の版（いまは `kimochi-v2`）を上げる。
+あわせて `sw.js` の `SHELL` に足し、`CACHE` の版（いまは `kimochi-v3`）を上げる。
 
 | 仮置き | 差し替える画像（IMAGE_SPEC の id） |
 |---|---|
-| こまっている 😟 | kao_komatte |
 | あさ ②「おはよう」 | ba_11 |
 | きゅうしょく「ありがとう」 | ba_12 |
 | あそぼう「いいよ」 | ba_13 |
