@@ -5,7 +5,7 @@ export const DEFAULT_EMOTIONS = [
   { id: 'ureshii', name: 'うれしい', img: 'images/kao/ureshii.webp', emoji: '😊' },
   { id: 'kanashii', name: 'かなしい', img: 'images/kao/kanashii.webp', emoji: '😢' },
   { id: 'okotte', name: 'おこっている', img: 'images/kao/okotte.webp', emoji: '😡' },
-  { id: 'komatte', name: 'こまっている', img: null, emoji: '😟' }, // 新規作成待ち（kao_komatte）
+  { id: 'kowai', name: 'こわい', img: 'images/kao/kowai.webp', emoji: '😨' },
 ];
 
 // 設定画面のアイコン候補
@@ -21,7 +21,7 @@ export const MIN_EMOTIONS = 2;
 export const MAX_EMOTIONS = 4;
 
 // 気持ちカードの色（並び順で決まる）
-export const CARD_COLORS = ['#FFE07A', '#9CC4FF', '#FF9C8F', '#B9E58C'];
+export const CARD_COLORS = ['#FFE07A', '#9CC4FF', '#FF9C8F', '#D3BFF5'];
 
 export const DEFAULT_LINES = [
   'おはよう', 'ありがとう', 'ごめんなさい', 'だいじょうぶ？', 'ほんとう？',

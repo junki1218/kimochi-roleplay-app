@@ -1,17 +1,17 @@
 {
-  "last_updated": "2026-10-07T20:14:03+09:00",
+  "last_updated": "2026-10-07T20:26:52+09:00",
   "project": "kimochi-roleplay-app",
   "tasks": [
     {
       "id": "TASK-001",
-      "title": "画風見本（場面2枚＋気持ちカード1枚）",
+      "title": "画風見本（場面2枚）",
       "owner": "Antigravity",
       "status": "TODO",
       "retry_count": 0,
       "needs_asset": true,
       "needs_browser_check": false,
       "depends_on": [],
-      "acceptance": "- IMAGE_SPEC.md 4章のうち担当 TASK-001 の3枚（kao_komatte / ba_11 / ba_12）がそろう\n- 2章の共通スタイルを満たし、既存のクレイ素材と画風がそろう\n- 場面は主役が相手に向かって話している瞬間を描く\n- 既存素材も並べた一覧シート verify_TASK-001.png を出す\n- ユーザーの画風承認を得るまで TASK-002 に着手しない",
+      "acceptance": "- IMAGE_SPEC.md 4章のうち担当 TASK-001 の2枚（ba_11 / ba_12）がそろう\n- 2章の共通スタイルを満たし、既存のクレイ素材と画風がそろう\n- 場面は主役が相手に向かって話している瞬間を描く\n- 既存素材も並べた一覧シート verify_TASK-001.png を出す\n- ユーザーの画風承認を得るまで TASK-002 に着手しない",
       "history": [
         {
           "at": "2026-10-07T19:45:02+09:00",
@@ -24,6 +24,18 @@
         {
           "at": "2026-10-07T20:14:03+09:00",
           "event": "acceptance を更新"
+        },
+        {
+          "at": "2026-10-07T20:26:52+09:00",
+          "event": "TODO → TODO"
+        },
+        {
+          "at": "2026-10-07T20:26:52+09:00",
+          "event": "acceptance を更新"
+        },
+        {
+          "at": "2026-10-07T20:26:52+09:00",
+          "event": "title を更新"
         }
       ]
     },

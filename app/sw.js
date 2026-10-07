@@ -1,6 +1,6 @@
 // オフラインでも動かすための service worker。
 // ネットにつながるときは新しい版を取り、つながらないときは保存した版を出す。
-const CACHE = 'kimochi-v2';
+const CACHE = 'kimochi-v3';
 const SHELL = [
   './', 'index.html', 'style.css', 'manifest.webmanifest',
   'js/app.js', 'js/data.js', 'js/store.js',
