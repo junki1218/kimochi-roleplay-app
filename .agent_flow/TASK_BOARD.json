@@ -1,0 +1,42 @@
+{
+  "last_updated": "2026-10-07T19:45:03+09:00",
+  "project": "kimochi-roleplay-app",
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "title": "画風見本（場面2枚＋気持ちカード1枚）",
+      "owner": "Antigravity",
+      "status": "TODO",
+      "retry_count": 0,
+      "needs_asset": true,
+      "needs_browser_check": false,
+      "depends_on": [],
+      "acceptance": "- IMAGE_SPEC.md 4章のうち担当 TASK-001 の3枚（kao_komatte / ba_11 / ba_12）がそろう\n- 2章の共通スタイルを満たし、既存のクレイ素材と画風がそろう\n- 既存素材も並べた一覧シート verify_TASK-001.png を出す\n- ユーザーの画風承認を得るまで TASK-002 に着手しない",
+      "history": [
+        {
+          "at": "2026-10-07T19:45:02+09:00",
+          "event": "created"
+        }
+      ]
+    },
+    {
+      "id": "TASK-002",
+      "title": "残りの新規画像（場面4枚＋気持ちカード2枚）",
+      "owner": "Antigravity",
+      "status": "TODO",
+      "retry_count": 0,
+      "needs_asset": true,
+      "needs_browser_check": false,
+      "depends_on": [
+        "TASK-001"
+      ],
+      "acceptance": "- IMAGE_SPEC.md 4章のうち担当 TASK-002 の6枚（kao_bikkuri / kao_hazukashii / ba_13〜ba_16）がそろう\n- TASK-001 で承認された画風にそろえる\n- 一覧シート verify_TASK-002.png を出す",
+      "history": [
+        {
+          "at": "2026-10-07T19:45:03+09:00",
+          "event": "created"
+        }
+      ]
+    }
+  ]
+}
