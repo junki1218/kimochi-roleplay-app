@@ -9,7 +9,7 @@ const app = document.getElementById('app');
 const state = {
   screen: 'start',
   settings: loadSettings(),
-  customScenes: [], // { id, title, question, blob, createdAt, url }
+  customScenes: [], // { id, title, situation, line, blob, createdAt, url }
   sceneIndex: 0,
   pick: { line: null, emotion: null }, // 「じぶんで やる」で選んだもの
   bigCard: null, // 回答者が全画面で見せているカードの index
@@ -97,7 +97,8 @@ const screens = {
         ${list.map((sc, i) => `
           <button class="scene-tile" data-action="openScene" data-i="${i}">
             ${sceneArt(sc, 'tile-art')}
-            <span class="tile-title">${esc(sc.title)}</span>
+            <span class="tile-line">${sc.line ? `「${esc(sc.line)}」` : esc(sc.title)}</span>
+            ${sc.line ? `<span class="tile-title">${esc(sc.title)}</span>` : ''}
           </button>`).join('')}
       </div>
     </section>`;
@@ -114,7 +115,9 @@ const screens = {
       <div class="scene-body">
         <div class="scene-frame">${sceneArt(sc)}</div>
         <div class="scene-side">
-          <p class="scene-q">${esc(sc.question)}</p>
+          ${sceneSituation(sc) ? `<p class="scene-sit">${esc(sceneSituation(sc))}…</p>` : ''}
+          ${sc.line ? `<div class="bubble">「${esc(sc.line)}」</div>` : ''}
+          <p class="scene-q">どんな きもちで いったかな？</p>
           <p class="scene-hint">👀 どこを みて そう おもった？</p>
           <div class="nav2">
             <button class="nav-btn" data-action="prevScene" ${i === 0 ? 'disabled' : ''}>◀ まえ</button>
@@ -142,7 +145,7 @@ const screens = {
     </section>`,
 
   confirm: () => {
-    const e = state.settings.emotions.find((x) => x.id === state.pick.emotion) || state.settings.emotions[0];
+    const e = pickedEmotion();
     return `
     <section class="screen">
       <header class="bar">${backBtn('pickEmotion')}<h2>これで いい？</h2>${steps(3)}</header>
@@ -163,11 +166,30 @@ const screens = {
     <section class="screen present">
       <div class="present-line">「${esc(state.pick.line)}」</div>
       <p class="present-ask">どんな きもちで いったかな？</p>
+      <button class="reveal-btn" data-go="reveal">🎉 こたえを みる</button>
       <div class="present-nav">
-        <button class="nav-btn" data-action="startSelf">🔁 つぎの もんだい</button>
-        <button class="nav-btn" data-go="give">おわる</button>
+        <button class="nav-btn" data-go="give">やめる</button>
       </div>
     </section>`,
+
+  // こたえあわせ：出題者が えらんだ きもちを 発表する
+  reveal: () => {
+    const e = pickedEmotion();
+    return `
+    <section class="screen reveal" style="--c:${colorOf(e)}">
+      <p class="reveal-head">こたえ</p>
+      <div class="reveal-body">
+        <div class="reveal-line">「${esc(state.pick.line)}」は</div>
+        <div class="reveal-card">${faceHtml(e, 'reveal-face')}<span class="reveal-name">${esc(e.name)}</span></div>
+        <div class="reveal-tail">きもちで いいました</div>
+      </div>
+      <div class="nav2 reveal-nav">
+        <button class="nav-btn" data-go="present">↩ もういちど みる</button>
+        <button class="nav-btn nav-start" data-action="startSelf">🔁 つぎの もんだい</button>
+        <button class="nav-btn" data-go="give">おわる</button>
+      </div>
+    </section>`;
+  },
 
   answer: () => {
     if (state.bigCard !== null) {
@@ -197,6 +219,13 @@ const screens = {
       ${state.iconPickFor !== null ? iconPicker() : ''}
     </section>`,
 };
+
+function pickedEmotion() {
+  return state.settings.emotions.find((x) => x.id === state.pick.emotion) || state.settings.emotions[0];
+}
+
+// 古い保存データ（question だけ持つ場面）も読めるようにする
+const sceneSituation = (sc) => sc.situation ?? sc.question ?? '';
 
 function steps(n) {
   return `<ol class="steps">${[1, 2, 3].map((k) => `<li class="${k <= n ? 'on' : ''}">${k}</li>`).join('')}</ol>`;
@@ -260,7 +289,7 @@ const settingsTabs = {
       ${DEFAULT_SCENES.map((sc) => `
         <li class="${hidden.has(sc.id) ? 'off' : ''}">
           ${sceneArt(sc, 'thumb')}
-          <div class="se-text"><b>${esc(sc.title)}</b><span>${esc(sc.question)}</span></div>
+          <div class="se-text"><b>${esc(sc.title)}「${esc(sc.line)}」</b><span>${esc(sc.situation)}</span></div>
           <button class="toggle" data-action="toggleScene" data-id="${sc.id}">${hidden.has(sc.id) ? 'かくしている' : 'つかう'}</button>
         </li>`).join('')}
     </ul>
@@ -272,7 +301,8 @@ const settingsTabs = {
           ${sceneArt(sc, 'thumb')}
           <div class="se-text">
             <input class="txt" data-field="sceneTitle" data-id="${sc.id}" value="${esc(sc.title)}" maxlength="20">
-            <input class="txt" data-field="sceneQ" data-id="${sc.id}" value="${esc(sc.question)}" maxlength="60">
+            <input class="txt" data-field="sceneSit" data-id="${sc.id}" value="${esc(sceneSituation(sc))}" placeholder="ばめんの せつめい" maxlength="40">
+            <input class="txt" data-field="sceneLine" data-id="${sc.id}" value="${esc(sc.line || '')}" placeholder="セリフ" maxlength="30">
           </div>
           <button class="del" data-action="delScene" data-id="${sc.id}" aria-label="けす">🗑️</button>
         </li>`).join('')}
@@ -281,7 +311,8 @@ const settingsTabs = {
       <label class="file-btn">🖼️ がぞうを えらぶ<input type="file" name="file" accept="image/*" hidden></label>
       <span class="file-name">えらんで いません</span>
       <input class="txt" name="title" placeholder="なまえ（れい：うんどうかい）" maxlength="20">
-      <input class="txt" name="question" placeholder="もんだいぶん" value="この こは どんな きもち？" maxlength="60">
+      <input class="txt" name="situation" placeholder="ばめんの せつめい（れい：プレゼントを もらって）" maxlength="40">
+      <input class="txt" name="line" placeholder="セリフ（れい：ありがとう）" maxlength="30" required>
       <button class="add-btn">＋ ばめんを ふやす</button>
     </form>
     <p class="help">ついかした がぞうは この iPad の なかだけに ほぞんされます。ホームがめんに ついかして つかうと きえにくく なります。</p>`;
@@ -336,7 +367,7 @@ function render() {
 
 // 1行に収めたい文字（ことばカード・発表画面など）が はみ出すときは、収まるまで字を小さくする
 function fitText() {
-  app.querySelectorAll('.line-card, .present-line, .confirm-line, .emo-name, .big-name').forEach((el) => {
+  app.querySelectorAll('.line-card, .present-line, .confirm-line, .emo-name, .big-name, .bubble, .reveal-line, .reveal-name').forEach((el) => {
     el.style.fontSize = '';
     let size = parseFloat(getComputedStyle(el).fontSize);
     while (el.scrollWidth > el.clientWidth && size > 14) {
@@ -503,10 +534,11 @@ app.addEventListener('change', async (ev) => {
     if (t.value.trim()) s.lines[+t.dataset.i] = t.value.trim();
     save();
     render();
-  } else if (t.dataset.field === 'sceneTitle' || t.dataset.field === 'sceneQ') {
+  } else if (['sceneTitle', 'sceneSit', 'sceneLine'].includes(t.dataset.field)) {
     const sc = state.customScenes.find((x) => x.id === t.dataset.id);
     if (!sc || !t.value.trim()) return;
-    sc[t.dataset.field === 'sceneTitle' ? 'title' : 'question'] = t.value.trim();
+    sc[{ sceneTitle: 'title', sceneSit: 'situation', sceneLine: 'line' }[t.dataset.field]] = t.value.trim();
+    delete sc.question;
     const { url, ...rec } = sc;
     await putCustomScene(rec);
   } else if (t.dataset.action === 'import' && t.files[0]) {
@@ -536,12 +568,14 @@ app.addEventListener('submit', async (ev) => {
   } else if (f.dataset.form === 'addScene') {
     const file = f.file.files[0];
     if (!file) return toast('がぞうを えらんでね');
+    if (!f.line.value.trim()) return toast('セリフを いれてね');
     try {
       const blob = await shrinkImage(file);
       const rec = {
         id: `my_${Date.now()}`,
         title: f.title.value.trim() || 'ばめん',
-        question: f.question.value.trim() || 'この こは どんな きもち？',
+        situation: f.situation.value.trim(),
+        line: f.line.value.trim(),
         blob,
         createdAt: Date.now(),
       };

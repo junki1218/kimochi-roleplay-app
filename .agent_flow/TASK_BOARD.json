@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-07T19:45:03+09:00",
+  "last_updated": "2026-10-07T20:14:03+09:00",
   "project": "kimochi-roleplay-app",
   "tasks": [
     {
@@ -11,17 +11,25 @@
       "needs_asset": true,
       "needs_browser_check": false,
       "depends_on": [],
-      "acceptance": "- IMAGE_SPEC.md 4章のうち担当 TASK-001 の3枚（kao_komatte / ba_11 / ba_12）がそろう\n- 2章の共通スタイルを満たし、既存のクレイ素材と画風がそろう\n- 既存素材も並べた一覧シート verify_TASK-001.png を出す\n- ユーザーの画風承認を得るまで TASK-002 に着手しない",
+      "acceptance": "- IMAGE_SPEC.md 4章のうち担当 TASK-001 の3枚（kao_komatte / ba_11 / ba_12）がそろう\n- 2章の共通スタイルを満たし、既存のクレイ素材と画風がそろう\n- 場面は主役が相手に向かって話している瞬間を描く\n- 既存素材も並べた一覧シート verify_TASK-001.png を出す\n- ユーザーの画風承認を得るまで TASK-002 に着手しない",
       "history": [
         {
           "at": "2026-10-07T19:45:02+09:00",
           "event": "created"
+        },
+        {
+          "at": "2026-10-07T20:14:03+09:00",
+          "event": "TODO → TODO"
+        },
+        {
+          "at": "2026-10-07T20:14:03+09:00",
+          "event": "acceptance を更新"
         }
       ]
     },
     {
       "id": "TASK-002",
-      "title": "残りの新規画像（場面4枚＋気持ちカード2枚）",
+      "title": "残りの新規画像（場面7枚＋気持ちカード2枚）",
       "owner": "Antigravity",
       "status": "TODO",
       "retry_count": 0,
@@ -30,11 +38,23 @@
       "depends_on": [
         "TASK-001"
       ],
-      "acceptance": "- IMAGE_SPEC.md 4章のうち担当 TASK-002 の6枚（kao_bikkuri / kao_hazukashii / ba_13〜ba_16）がそろう\n- TASK-001 で承認された画風にそろえる\n- 一覧シート verify_TASK-002.png を出す",
+      "acceptance": "- IMAGE_SPEC.md 4章のうち担当 TASK-002 の9枚（kao_bikkuri / kao_hazukashii / ba_13〜ba_19）がそろう\n- TASK-001 で承認された画風にそろえる\n- 組になる2枚を並べて、気持ちの違いが一目で分かる\n- 一覧シート verify_TASK-002.png を出す",
       "history": [
         {
           "at": "2026-10-07T19:45:03+09:00",
           "event": "created"
+        },
+        {
+          "at": "2026-10-07T20:14:03+09:00",
+          "event": "TODO → TODO"
+        },
+        {
+          "at": "2026-10-07T20:14:03+09:00",
+          "event": "acceptance を更新"
+        },
+        {
+          "at": "2026-10-07T20:14:03+09:00",
+          "event": "title を更新"
         }
       ]
     }
