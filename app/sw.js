@@ -1,13 +1,13 @@
 // オフラインでも動かすための service worker。
 // ネットにつながるときは新しい版を取り、つながらないときは保存した版を出す。
-const CACHE = 'kimochi-v1';
+const CACHE = 'kimochi-v2';
 const SHELL = [
   './', 'index.html', 'style.css', 'manifest.webmanifest',
   'js/app.js', 'js/data.js', 'js/store.js',
   'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png',
   'images/start_bg.webp',
   'images/kao/ureshii.webp', 'images/kao/kanashii.webp', 'images/kao/okotte.webp', 'images/kao/kowai.webp',
-  ...['01_present', '02_futari', '03_hirameki', '04_omocha', '05_kangaeru', '06_lion', '07_yoru', '08_bikkuri']
+  ...['01_present', '02_futari', '03_hirameki', '04_omocha', '08_bikkuri']
     .map((n) => `images/ba/ba_${n}.webp`),
 ];
 

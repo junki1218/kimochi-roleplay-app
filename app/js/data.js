@@ -28,20 +28,23 @@ export const DEFAULT_LINES = [
   'いいよ', 'いやです', 'またね', 'できた！', 'しらない',
 ];
 
+// 場面＝「だれかが セリフを いっている ところ」。
+// 同じセリフを ちがう きもちで いう場面を 2まいずつ 組にしている（おはよう／ありがとう／いいよ／ごめんなさい）。
+// situation は絵の説明（ちいさく出す）、line は吹き出しに大きく出すセリフ。
 export const DEFAULT_SCENES = [
-  { id: 'ba_01', title: 'プレゼント', question: 'プレゼントを もらった こは どんな きもち？', img: 'images/ba/ba_01_present.webp' },
-  { id: 'ba_02', title: 'ふたりで', question: 'ふたりは どんな きもち？', img: 'images/ba/ba_02_futari.webp' },
-  { id: 'ba_03', title: 'ひらめいた', question: 'この こは どんな きもち？', img: 'images/ba/ba_03_hirameki.webp' },
-  { id: 'ba_04', title: 'おもちゃ', question: 'おもちゃが こわれた こは どんな きもち？', img: 'images/ba/ba_04_omocha.webp' },
-  { id: 'ba_05', title: 'かんがえる', question: 'この こは どんな きもち？', img: 'images/ba/ba_05_kangaeru.webp' },
-  { id: 'ba_06', title: 'べんきょう', question: 'ライオンさんは どんな きもち？', img: 'images/ba/ba_06_lion.webp' },
-  { id: 'ba_07', title: 'よる', question: 'この こは どんな きもち？', img: 'images/ba/ba_07_yoru.webp' },
-  { id: 'ba_08', title: 'おどろく', question: 'この こは どんな きもち？', img: 'images/ba/ba_08_bikkuri.webp' },
-  // 以下は新規作成待ち（IMAGE_SPEC 4.2）
-  { id: 'ba_11', title: 'アイス', question: 'アイスを おとした こは どんな きもち？', img: null, emoji: '🍦' },
-  { id: 'ba_12', title: 'ならぶ', question: 'ならんで いた こは どんな きもち？', img: null, emoji: '🍛' },
-  { id: 'ba_13', title: 'やすみじかん', question: 'この こは どんな きもち？', img: null, emoji: '🪑' },
-  { id: 'ba_14', title: 'つみき', question: 'つみきを たおされた こは どんな きもち？', img: null, emoji: '🧱' },
-  { id: 'ba_15', title: 'ボール', question: 'ボールを とられた こは どんな きもち？', img: null, emoji: '⚽' },
-  { id: 'ba_16', title: 'ころんだ', question: 'みて いる こは どんな きもち？', img: null, emoji: '🩹' },
+  { id: 'ba_01', title: 'プレゼント', situation: 'プレゼントを もらって', line: 'ありがとう', img: 'images/ba/ba_01_present.webp' },
+  { id: 'ba_02', title: 'あさ', situation: 'ともだちに あって', line: 'おはよう', img: 'images/ba/ba_02_futari.webp' },
+  { id: 'ba_03', title: 'できた', situation: 'もんだいが とけて', line: 'わかった！', img: 'images/ba/ba_03_hirameki.webp' },
+  { id: 'ba_04', title: 'おもちゃ', situation: 'おもちゃが こわれて', line: 'こわれちゃった', img: 'images/ba/ba_04_omocha.webp' },
+  { id: 'ba_08', title: 'びっくり', situation: 'ともだちの はなしを きいて', line: 'ほんとう？', img: 'images/ba/ba_08_bikkuri.webp' },
+  // 以下は新規作成待ち（IMAGE_SPEC 4.2）。絵文字は絵の中身を示すだけで、気持ちの答えにならないものにする
+  { id: 'ba_11', title: 'あさ ②', situation: 'げんきが ない あさに', line: 'おはよう', img: null, emoji: '🏫' },
+  { id: 'ba_12', title: 'きゅうしょく', situation: 'にがてな ものを もらって', line: 'ありがとう', img: null, emoji: '🥦' },
+  { id: 'ba_13', title: 'あそぼう', situation: '「あそぼう」と いわれて', line: 'いいよ', img: null, emoji: '⚽' },
+  { id: 'ba_14', title: 'けしゴム', situation: 'けしゴムを かってに つかわれて', line: 'いいよ', img: null, emoji: '✏️' },
+  { id: 'ba_15', title: 'つみき', situation: 'ともだちの つみきを たおして', line: 'ごめんなさい', img: null, emoji: '🧱' },
+  { id: 'ba_16', title: 'せんせいと', situation: 'せんせいに いわれて', line: 'ごめんなさい', img: null, emoji: '🏫' },
+  { id: 'ba_17', title: 'ころんだ', situation: 'ともだちが ころんで', line: 'だいじょうぶ？', img: null, emoji: '🩹' },
+  { id: 'ba_18', title: 'ボール', situation: 'ボールを とられそうに なって', line: 'いやです', img: null, emoji: '🏀' },
+  { id: 'ba_19', title: 'おわかれ', situation: 'ともだちが ひっこす ひに', line: 'またね', img: null, emoji: '🚚' },
 ];
