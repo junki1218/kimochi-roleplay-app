@@ -1,6 +1,6 @@
 # きもちを つたえよう（叩き台）
 
-特別支援学校（知的）中学部「人との関わり・コミュニケーション」の授業アプリ。
+知的障害のある子ども向けの「人との関わり・コミュニケーション」の授業アプリ。
 仕様は [.agent_flow/SPEC.md](.agent_flow/SPEC.md)、画像の発注は [.agent_flow/IMAGE_SPEC.md](.agent_flow/IMAGE_SPEC.md)。
 
 ## 動かす
